@@ -10,7 +10,7 @@ namespace MeetingsAPI.Enitities
         public DbSet<Location> Locations { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             modelBuilder.Entity<Meetup>()
                 .HasOne(m => m.Location)
