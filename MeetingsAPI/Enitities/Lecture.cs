@@ -11,6 +11,7 @@ namespace MeetingsAPI.Enitities
         public string Author { get; set; }
         public string Topic { get; set;}
         public string Description { get; set; }
+        public string Language { get; set;}
 
         public virtual Meetup Meetup { get; set; }
         public int MeetupId { get; set; }
