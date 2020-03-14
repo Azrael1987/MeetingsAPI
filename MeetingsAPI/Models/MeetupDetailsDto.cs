@@ -3,17 +3,12 @@ using System.Collections.Generic;
 
 namespace MeetingsAPI.Models
 {
-    public class MeetupDetailsDto
+    public class MeetupDetailsDto: MeetupDto
     {
-        public string Name { get; set; }
-        public string Organizer { get; set; }
-        public DateTime Date { get; set; }
-        public bool IsPrivate { get; set; }
-
         public string City { get; set; }
         public string Street { get; set; }
         public string PostCode { get; set; }
 
-     //   public List<LectureDto> Lectures { get; set; }
+        public List<LectureDto> Lectures { get; set; }
     }
 }

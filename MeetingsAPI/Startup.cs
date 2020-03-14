@@ -32,6 +32,7 @@ namespace MeetingsAPI
             services.AddDbContext<MeetupContext>();
             services.AddScoped<MeetupSeeder>();
             services.AddScoped<IMeetupService, MeetupService>();
+            services.AddScoped<ILectureService, LectureService>();
             services.AddAutoMapper(this.GetType().Assembly);
         }
 

@@ -9,6 +9,8 @@ namespace MeetingsAPI.Enitities
         public DbSet<Meetup> Meetups { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
+        public DbSet<SpecialGuest> SpecialGuests { get; set;}
+        public DbSet<SpecialGuestJoint> SpecialGuestJoint { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +22,18 @@ namespace MeetingsAPI.Enitities
             modelBuilder.Entity<Meetup>()
                 .HasMany(m => m.Lectures)
                 .WithOne(l => l.Meetup);
+
+            modelBuilder.Entity<SpecialGuestJoint>()
+                .HasMany(m => m.Meetups)
+                .WithOne(s => s.SpecialGuestJoint);
+
+            modelBuilder.Entity<SpecialGuest>()
+                .HasMany(s => s.SpecialGuestJoints)
+                .WithOne(s => s.FirstSpecialGuest);
+
+            modelBuilder .Entity<SpecialGuest>()
+                .HasMany(s => s.SpecialGuestJoints)
+                .WithOne(s => s.SecondSpecialGuest);
         }
 
         protected   override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

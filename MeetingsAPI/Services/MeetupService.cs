@@ -28,10 +28,20 @@ namespace MeetingsAPI.Services
             return _mapper.Map<List<MeetupDetailsDto>>(meetups).ToList();
         }
 
+        public List<MeetupDetailsDto> GetMeetupsWithDetailsList()
+        {
+            var meetups = _meetupContext.Meetups
+                 .Include(m => m.Location)
+                 .Include(m => m.Lectures)
+                 .ToList();
+            return _mapper.Map<List<MeetupDetailsDto>>(meetups).ToList();
+        }
+
         public MeetupDetailsDto GetMeetup(string name)
         {
             Meetup result = _meetupContext.Meetups
                 .Include(m => m.Location)
+                .Include(m => m.Lectures)
                 .FirstOrDefault(m => m.Name.Replace(" ", "-").ToLower() == name.ToLower());
             if (result == null)
             {
@@ -87,6 +97,17 @@ namespace MeetingsAPI.Services
             _meetupContext.SaveChanges();
         }
 
-        //5.10 - usuwanie zasobów
+        public MeetupDetailsDto GetMeetupWithDetailsList(string meetupName)
+        {
+           var meetup = _meetupContext.Meetups
+                .Include(m => m.Location)
+                .Include(m => m.Lectures)
+                .FirstOrDefault(m => m.Name.ToLower() == meetupName.ToLower().Replace("-"," "));
+            if(meetup == null)
+            {
+                throw new NullReferenceException();
+            }
+            return _mapper.Map<MeetupDetailsDto>(meetup);
+        }
     }
 }

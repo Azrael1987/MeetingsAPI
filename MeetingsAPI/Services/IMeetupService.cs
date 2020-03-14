@@ -11,6 +11,8 @@ namespace MeetingsAPI.Services
     public interface IMeetupService
     {
         List<MeetupDetailsDto> GetMeetupsList();
+        List<MeetupDetailsDto> GetMeetupsWithDetailsList();
+        MeetupDetailsDto GetMeetupWithDetailsList(string meetupName);
         MeetupDetailsDto GetMeetup(string name);
         string CreateMeetup(MeetupDto data);
         string Edit(string name, MeetupDto model);
