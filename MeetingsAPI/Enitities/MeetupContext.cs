@@ -28,11 +28,11 @@ namespace MeetingsAPI.Enitities
                 .WithOne(s => s.SpecialGuestJoint);
 
             modelBuilder.Entity<SpecialGuest>()
-                .HasMany(s => s.SpecialGuestJoints)
+                .HasMany(s => s.FirstSpecialGuestJoints)
                 .WithOne(s => s.FirstSpecialGuest);
 
             modelBuilder .Entity<SpecialGuest>()
-                .HasMany(s => s.SpecialGuestJoints)
+                .HasMany(s => s.SecondSpecialGuestJoints)
                 .WithOne(s => s.SecondSpecialGuest);
         }
 

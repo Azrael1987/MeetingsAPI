@@ -14,7 +14,9 @@ namespace MeetingsAPI.Enitities
 
         //public virtual Meetup Meetup { get; set;}
         //public int MeetupId { get;set;}
-        public virtual List<SpecialGuestJoint> SpecialGuestJoints { get; set;}
+        public virtual List<SpecialGuestJoint> FirstSpecialGuestJoints { get; set;}
+        public virtual List<SpecialGuestJoint> SecondSpecialGuestJoints { get; set; }
+
 
     }
 }
