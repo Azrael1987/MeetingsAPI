@@ -11,5 +11,7 @@ namespace MeetingsAPI.Services
     {
         string CreateLecture(string meetupName, LectureDto model);
         List<LectureDto> GetListOfLecturesPerMeetup(string meetupName);
+        void DeleteAllLectures(string meetupName);
+        void DeleteLecture(string meetup, int idLecture);
     }
 }

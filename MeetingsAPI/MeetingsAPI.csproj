@@ -6,11 +6,43 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200314170600_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314170600_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314172016_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314172016_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314181342_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314181342_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314183007_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314183007_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314183528_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314183528_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314184144_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314184144_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314191027_AddSpecialGuestsRelation2.cs" />
+    <Compile Remove="Migrations\20200314191027_AddSpecialGuestsRelation2.Designer.cs" />
+    <Compile Remove="Migrations\20200314200029_AddSpecialGuestsRelation2.cs" />
+    <Compile Remove="Migrations\20200314200029_AddSpecialGuestsRelation2.Designer.cs" />
+    <Compile Remove="Migrations\20200314211636_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314211636_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200314212331_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200314212331_AddSpecialGuestsRelation.Designer.cs" />
+    <Compile Remove="Migrations\20200317233429_AddSpecialGuestsRelation.cs" />
+    <Compile Remove="Migrations\20200317233429_AddSpecialGuestsRelation.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

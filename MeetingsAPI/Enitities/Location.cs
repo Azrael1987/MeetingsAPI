@@ -13,6 +13,6 @@ namespace MeetingsAPI.Enitities
         public string PostCode { get; set; }
 
         public virtual Meetup Meetup { get; set; }
-        public int MeetupId{ get; set; }
+        public int MeetupId{ get; set; } // adam.gruszecki@microsoft.wsei.edu.pl // Warsztat8@microsoft.wsei.edu.pl
     }
 }

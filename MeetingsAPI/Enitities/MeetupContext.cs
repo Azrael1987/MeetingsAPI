@@ -9,11 +9,11 @@ namespace MeetingsAPI.Enitities
         public DbSet<Meetup> Meetups { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Lecture> Lectures { get; set; }
-        public DbSet<SpecialGuest> SpecialGuests { get; set;}
+        public DbSet<SpecialGuest> SpecialGuests { get; set; }
         public DbSet<SpecialGuestJoint> SpecialGuestJoint { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        { 
             modelBuilder.Entity<Meetup>()
                 .HasOne(m => m.Location)
                 .WithOne(l => l.Meetup)
@@ -23,20 +23,30 @@ namespace MeetingsAPI.Enitities
                 .HasMany(m => m.Lectures)
                 .WithOne(l => l.Meetup);
 
+            // koncepcja Marka Z.
             modelBuilder.Entity<SpecialGuestJoint>()
-                .HasMany(m => m.Meetups)
-                .WithOne(s => s.SpecialGuestJoint);
+                .HasKey(j => new {j.MeetupId, j.FirstSpecialGuestId, j.SecondSpecialGuestId});
 
-            modelBuilder.Entity<SpecialGuest>()
-                .HasMany(s => s.FirstSpecialGuestJoints)
-                .WithOne(s => s.FirstSpecialGuest);
+            modelBuilder.Entity<SpecialGuestJoint>()
+                .HasOne(m => m.Meetups)
+                .WithMany(l => l.SpecialGuestJoints)
+                .HasForeignKey(l => l.MeetupId)
+                .OnDelete(DeleteBehavior.Cascade); // usuwanie kaskadowe !
 
-            modelBuilder .Entity<SpecialGuest>()
-                .HasMany(s => s.SecondSpecialGuestJoints)
-                .WithOne(s => s.SecondSpecialGuest);
+            modelBuilder.Entity<SpecialGuestJoint>()
+                .HasOne(m => m.FirstSpecialGuests)
+                .WithMany(l => l.FirstSpecialGuestJoints)
+                .HasForeignKey(l => l.FirstSpecialGuestId)
+                .OnDelete(DeleteBehavior.Restrict); // usuwnanie nie kaskadowe
+
+            modelBuilder.Entity<SpecialGuestJoint>()
+                .HasOne(m => m.SecondSpecialGuests)
+                .WithMany(j => j.SecondSpecialGuestJoints)
+                .HasForeignKey(m => m.SecondSpecialGuestId)
+                .OnDelete(DeleteBehavior.Restrict); // usuwnanie nie kaskadowe
         }
 
-        protected   override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }

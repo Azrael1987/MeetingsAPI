@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:50796",
-      "sslPort": 44342
+      "applicationUrl": "http://localhost:50797",
+      "sslPort": 44395
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,6 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "api/Meetup",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

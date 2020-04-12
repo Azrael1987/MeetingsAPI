@@ -1,6 +1,7 @@
 ﻿using MeetingsAPI.Models;
 using MeetingsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace MeetingsAPI.Controllers
@@ -61,7 +62,34 @@ namespace MeetingsAPI.Controllers
             }
             return result;
         }
-    }
 
-    // 6.3 usuwanie wykladów
+        [HttpDelete]
+        public ActionResult Delete(string meetupName)
+        {
+            try
+            {
+                _lectureService.DeleteAllLectures(meetupName);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string meetupName, int id)
+        {
+           // throw new Exception("test");
+            try
+            {
+                _lectureService.DeleteLecture(meetupName, id);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        } //6,5
+    }
 }
